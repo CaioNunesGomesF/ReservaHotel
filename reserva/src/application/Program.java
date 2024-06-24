@@ -1,6 +1,7 @@
 package application;
 
 import entities.Reservation;
+import model.exceptions.DomainException;
 
 import java.security.spec.RSAOtherPrimeInfo;
 import java.text.ParseException;
@@ -38,6 +39,12 @@ public class    Program {
             System.out.println("Reservation: " + reservation);
         }catch(ParseException e){
             System.out.println("Invalid date format.");
+        }
+        catch(DomainException e) {
+            System.out.println("Error in reservation: " + e.getMessage());
+        }
+        catch(RuntimeException e){
+            System.out.println("Unexpected error.");
         }
 
         sc.close();
